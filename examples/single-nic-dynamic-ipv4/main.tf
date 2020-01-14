@@ -1,7 +1,7 @@
 # Required resources to test the module
 resource "azurerm_resource_group" "test" {
-  name     = var.resource_groups.rg1.name
-  location = var.resource_groups.rg1.location
+  name     = local.name
+  location = local.location
 }
 
 resource "azurerm_virtual_network" "test" {
@@ -18,18 +18,16 @@ resource "azurerm_subnet" "test" {
   address_prefix       = "10.0.1.0/24"
 }
 
-
 # Testing the module
 module "test_nic" {
-  source = "../"
+  source = "../../"
 
-  prefix              = var.prefix
-  tags                = var.tags
-  location            = azurerm_resource_group.test.location
+  prefix              = local.prefix
+  tags                = local.tags
+  location            = local.location
   resource_group_name = azurerm_resource_group.test.name
-  nic_objects         = var.nic_objects.nics
-  pip_objects         = lookup(var.pip_objects, "pips", null)
+  nic_objects         = local.nic_objects.nics
+  pip_objects         = lookup(local.pip_objects, "pips", null)
   subnet_id           = azurerm_subnet.test.id
-
 }
 
