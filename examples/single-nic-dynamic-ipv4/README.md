@@ -17,7 +17,7 @@ terraform destroy
 ```
 
 ## Outputs
-| Name | Description |
-| --   | -- |
-| storage_name | Returns the name of the created storage account | 
-| caf_name | Returns the name as given by the CAF module, before being sent to storage account creation |
+| Name | Type | Description | 
+| -- | -- | -- | 
+| object | string | Output the networking interface as a full object (azurerm_network_interface.nic) |
+| id | string | ID of the nic |

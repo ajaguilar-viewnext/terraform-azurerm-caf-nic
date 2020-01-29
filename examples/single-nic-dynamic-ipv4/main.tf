@@ -1,7 +1,7 @@
 # Required resources to test the module
 resource "azurerm_resource_group" "test" {
-  name     = local.name
-  location = local.location
+  name     = "${var.prefix}-${basename(abspath(path.module))}"
+  location = var.location
 }
 
 resource "azurerm_virtual_network" "test" {
@@ -22,12 +22,22 @@ resource "azurerm_subnet" "test" {
 module "test_nic" {
   source = "../../"
 
-  prefix              = local.prefix
-  tags                = local.tags
-  location            = local.location
-  resource_group_name = azurerm_resource_group.test.name
-  nic_objects         = local.nic_objects.nics
-  pip_objects         = lookup(local.pip_objects, "pips", null)
-  subnet_id           = azurerm_subnet.test.id
+  prefix                = var.prefix
+  tags                  = var.tags
+  location              = azurerm_resource_group.test.location
+  resource_group_name   = azurerm_resource_group.test.name
+
+  name                  = var.name
+  convention            = var.convention
+
+  enable_ip_forwarding          = var.enable_ip_forwarding
+  internal_dns_name_label       = var.internal_dns_name_label
+  dns_servers                   = var.dns_servers
+  enable_accelerated_networking = var.enable_accelerated_networking
+  private_ip_address_allocation = var.private_ip_address_allocation
+  private_ip_address            = var.private_ip_address
+  private_ip_address_version    = var.private_ip_address_version
+
+  subnet_id                     = azurerm_subnet.test.id
 }
 
