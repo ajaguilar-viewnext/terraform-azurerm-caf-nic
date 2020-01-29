@@ -1,8 +1,9 @@
-output "objects" {
-  description = "Output the networking interfaces as a full object (azurerm_network_interface.nic)"
-  value       = module.test_nic.objects
+output "object" {
+  description = "Output the networking interface as a full object (azurerm_network_interface.nic)"
+  value       = module.test_nic.object
 }
 
-output "nic_ids" {
-  value = module.test_nic.nic_ids
+output "id" {
+  description = "ID of the networking card"
+  value = module.test_nic.id
 }

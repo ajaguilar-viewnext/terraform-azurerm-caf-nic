@@ -1,12 +1,9 @@
-output "objects" {
+output "object" {
   description = "Output the networking interfaces as a full object (azurerm_network_interface.nic)"
   value       = azurerm_network_interface.nic
 }
 
-output "nic_ids" {
-  description = "List of nic ids"
-  value       = [
-    for nic in azurerm_network_interface.nic:
-      nic.id
-  ]
+output "id" {
+  description = "id of the nic"
+  value       = azurerm_network_interface.nic.id
 }

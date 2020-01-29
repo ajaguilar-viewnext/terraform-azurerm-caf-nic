@@ -1,6 +1,6 @@
-# Single NIC IPv4 static address
+# Single NIC IPv4 dynamic address with public IP address
 
-Creates a single NIC with a static IPv4 address.
+Creates a single NIC with a dynamic IPv4 address with a public IP address IP
 
 ## Usage
 To run this example, simply execute: 

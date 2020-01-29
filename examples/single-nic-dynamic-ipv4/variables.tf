@@ -1,26 +1,26 @@
 variable "prefix" {
+  description = "Resource prefix"
+  default = "test"
+}
 
+
+variable "location" {
+  description = "Location of the resources"
+  default = "southeastasia"
 }
 
 variable "tags" {
-
-}
-
-variable "resource_group_name" {
-  description = "(Required) The name of the resource group in which to create the network interface. Changing this forces a new resource to be created."
-}
-
-variable "location" {
-  description = "(Required) Specifies the Azure Region where the NIC is deployed. Changing this forces a new resource to be created."
+  default = {}
 }
 
 variable "convention" {
-  description = "(Required) Naming convention to apply the NIC"
+  default = "cafrandom"
 }
+
 
 variable "name" {
   description = "Name of the networking card"
-  default = ""
+  default = "caftest-"
 }
 
 variable "enable_ip_forwarding" {
@@ -34,7 +34,7 @@ variable "internal_dns_name_label" {
 
 variable "dns_servers" {
   description = "(Optional) List of DNS server to apply to the NIC"
-  default = []
+  default = ["1.2.3.4"]
 }
 
 variable "enable_accelerated_networking" {
@@ -55,10 +55,6 @@ variable "private_ip_address" {
 variable "private_ip_address_version" {
   description = "(Optional) (Default = 'IPv4') Possible values are 'IPv4' and 'IPv6'"
   default = "IPv4"
-}
-
-variable "subnet_id" {
-  description = "(Required) Subnet_id to deploy the networking cards"
 }
 
 variable "public_ip_address_id" {
