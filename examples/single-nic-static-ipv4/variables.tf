@@ -44,12 +44,12 @@ variable "enable_accelerated_networking" {
 
 variable "private_ip_address_allocation" {
   description = "(Optional) (Default = 'Dynamic'). When set to static must also set a value for private_ip_address"
-  default = "Static"
+  default = "Dynamic"
 }
 
 variable "private_ip_address" {
   description = "(Optional) IP address of the NIC when private_ip_address_allocation is set to 'Static'"
-  default = "10.0.1.4"
+  default = null
 }
 
 variable "private_ip_address_version" {
