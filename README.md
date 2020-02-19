@@ -1,7 +1,6 @@
 # Deploys an Azure Virtual Machine Network Interface Card
 Creates an Azure Virtual Machine NIC
 
-
 Reference the module to a specific version (recommended):
 ```hcl
 module "vm_nic" {
